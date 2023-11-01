@@ -43,9 +43,8 @@ public class CarRaceGame {
 
     private void startMoveCars(final int moveCount) {
         outputView.printExecutionMessage();
-        Supplier<Integer> supplier = RandomNumberGenerator.getGenerateSupplier();
         for (int count = 1; count <= moveCount; count++) {
-            raceJudge.moveCars(supplier);
+            raceJudge.moveCars(RandomNumberGenerator.getGenerateSupplier());
             printSingleMoveResult();
         }
     }
