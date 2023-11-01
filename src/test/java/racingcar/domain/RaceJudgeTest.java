@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 import java.util.List;
+import java.util.stream.Stream;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.dto.MoveResult;
@@ -22,10 +23,14 @@ class RaceJudgeTest {
 
         // when
         raceJudge.addCars(names);
-        Cars findCars = carsRepository.findCars().get();
+        Stream<String> actualNames = carsRepository.findCars()
+                .get()
+                .cars()
+                .stream()
+                .map(Car::getName);
 
         // then
-        assertThat(findCars).isEqualTo(cars);
+        assertThat(actualNames).containsExactly("pobi", "jason");
     }
 
     @DisplayName("자동차 이름은 중복될 수 없습니다.")
