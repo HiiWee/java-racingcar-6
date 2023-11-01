@@ -12,7 +12,15 @@ import racingcar.view.OutputView;
 
 public class CarRaceGame {
 
-    private final RaceJudge judge = new RaceJudge();
+    private final InputView inputView;
+    private final OutputView outputView;
+    private final RaceJudge raceJudge;
+
+    public CarRaceGame(final InputView inputView, final OutputView outputView, final RaceJudge raceJudge) {
+        this.inputView = inputView;
+        this.outputView = outputView;
+        this.raceJudge = raceJudge;
+    }
 
     public void startRace() {
         addRaceCars();
@@ -22,12 +30,12 @@ public class CarRaceGame {
     }
 
     private void addRaceCars() {
-        List<String> carNames = InputView.inputCarNames();
-        judge.addCars(carNames);
+        List<String> carNames = inputView.inputCarNames();
+        raceJudge.addCars(carNames);
     }
 
     private int inputMoveCount() {
-        String inputMoveCount = InputView.inputMoveCount();
+        String inputMoveCount = inputView.inputMoveCount();
         InputMoveCountValidator.validateCount(inputMoveCount);
         return Integer.parseInt(inputMoveCount);
     }
@@ -35,18 +43,18 @@ public class CarRaceGame {
     private void startMoveCars(final int moveCount) {
         Supplier<Integer> supplier = RandomNumberGenerator.getGenerateSupplier();
         for (int count = 1; count <= moveCount; count++) {
-            judge.moveCars(supplier);
+            raceJudge.moveCars(supplier);
             printSingleMoveResult();
         }
     }
 
     private void printWinner() {
-        WinnerNames names = judge.findAllWinnerNames();
-        OutputView.printWinnerNames(names.toString());
+        WinnerNames names = raceJudge.findAllWinnerNames();
+        outputView.printWinnerNames(names.toString());
     }
 
     private void printSingleMoveResult() {
-        MoveResults singleMoveResults = judge.createSingleMoveResults();
-        OutputView.printSingleMoveResult(singleMoveResults.toString());
+        MoveResults singleMoveResults = raceJudge.createSingleMoveResults();
+        outputView.printSingleMoveResult(singleMoveResults.toString());
     }
 }

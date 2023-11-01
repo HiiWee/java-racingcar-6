@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 
 class CarsRepositoryTest {
 
-    CarsRepository repository = CarsRepository.getInstance();
+    CarsRepository repository = new CarsRepository();
 
     @DisplayName("시합에 참여하는 자동차를 등록할 수 있다.")
     @Test

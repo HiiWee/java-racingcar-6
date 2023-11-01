@@ -10,8 +10,8 @@ import racingcar.dto.MoveResult;
 
 class RaceJudgeTest {
 
-    RaceJudge raceJudge = new RaceJudge();
-    CarsRepository carsRepository = CarsRepository.getInstance();
+    CarsRepository carsRepository = new CarsRepository();
+    RaceJudge raceJudge = new RaceJudge(carsRepository);
 
     @DisplayName("심판은 레이스할 자동차를 등록합니다.")
     @Test

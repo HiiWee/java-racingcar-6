@@ -7,7 +7,11 @@ import racingcar.dto.WinnerNames;
 
 public class RaceJudge {
 
-    private final CarsRepository carsRepository = CarsRepository.getInstance();
+    private final CarsRepository carsRepository;
+
+    public RaceJudge(final CarsRepository carsRepository) {
+        this.carsRepository = carsRepository;
+    }
 
     public void addCars(final List<String> carNames) {
         Cars cars = Cars.createFrom(carNames);
