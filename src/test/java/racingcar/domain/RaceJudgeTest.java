@@ -91,7 +91,7 @@ class RaceJudgeTest {
 
         // when
         raceJudge.moveCars(() -> 4);
-        String winners = raceJudge.findAllWinnerNames().toString();
+        String winners = raceJudge.findAllWinnerNames().createWinnerMessage();
 
         // then
         assertThat(winners).isEqualTo("pobi,jason");

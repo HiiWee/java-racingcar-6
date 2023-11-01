@@ -9,8 +9,7 @@ public record WinnerNames(List<String> names) {
         return new WinnerNames(cars.findAllWinnerNames());
     }
 
-    @Override
-    public String toString() {
+    public String createWinnerMessage() {
         return String.join(",", names);
     }
 }

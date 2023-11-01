@@ -2,6 +2,7 @@ package racingcar;
 
 import java.util.List;
 import java.util.function.Supplier;
+import java.util.stream.IntStream;
 import racingcar.domain.RaceJudge;
 import racingcar.dto.MoveResults;
 import racingcar.dto.WinnerNames;
@@ -41,6 +42,7 @@ public class CarRaceGame {
     }
 
     private void startMoveCars(final int moveCount) {
+        outputView.printExecutionMessage();
         Supplier<Integer> supplier = RandomNumberGenerator.getGenerateSupplier();
         for (int count = 1; count <= moveCount; count++) {
             raceJudge.moveCars(supplier);
@@ -50,11 +52,11 @@ public class CarRaceGame {
 
     private void printWinner() {
         WinnerNames names = raceJudge.findAllWinnerNames();
-        outputView.printWinnerNames(names.toString());
+        outputView.printWinnerNames(names.createWinnerMessage());
     }
 
     private void printSingleMoveResult() {
         MoveResults singleMoveResults = raceJudge.createSingleMoveResults();
-        outputView.printSingleMoveResult(singleMoveResults.toString());
+        outputView.printSingleMoveResult(singleMoveResults.createResultsMessage());
     }
 }

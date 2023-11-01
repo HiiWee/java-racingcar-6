@@ -11,8 +11,7 @@ public record MoveResult(String name, int position) {
         return new MoveResult(car.getName(), car.getPosition());
     }
 
-    @Override
-    public String toString() {
+    public String createResultMessage() {
         return String.format(RESULT_FORMAT, name, MOVEMENT_BAR.repeat(position));
     }
 }

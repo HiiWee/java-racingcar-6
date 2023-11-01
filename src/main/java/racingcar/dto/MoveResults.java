@@ -13,10 +13,9 @@ public record MoveResults(List<MoveResult> results) {
                 .toList());
     }
 
-    @Override
-    public String toString() {
+    public String createResultsMessage() {
         return results.stream()
-                .map(MoveResult::toString)
+                .map(MoveResult::createResultMessage)
                 .collect(Collectors.joining());
     }
 }
