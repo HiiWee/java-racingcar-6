@@ -1,6 +1,5 @@
 package racingcar.domain;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.function.Supplier;
 import racingcar.validator.RaceRuleValidator;
@@ -14,11 +13,6 @@ public record Cars(List<Car> cars) {
         return new Cars(carNames.stream()
                 .map(name -> Car.of(name, START_POSITION))
                 .toList());
-    }
-
-    @Override
-    public List<Car> cars() {
-        return Collections.unmodifiableList(cars);
     }
 
     public void moveAllForward(final Supplier<Integer> randomNumberSupplier) {
