@@ -1,8 +1,6 @@
 package racingcar;
 
 import java.util.List;
-import java.util.function.Supplier;
-import java.util.stream.IntStream;
 import racingcar.domain.RaceJudge;
 import racingcar.dto.MoveResults;
 import racingcar.dto.WinnerNames;
